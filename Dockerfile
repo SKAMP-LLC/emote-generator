@@ -1,8 +1,8 @@
-FROM node:16.13-alpine
+FROM node:20-alpine
 
-ENV APP_PATH /app
-ENV ASSET_PATH /assets
-ENV TEMP_PATH /tmp
+ENV APP_PATH=/app
+ENV ASSET_PATH=/assets
+ENV TEMP_PATH=/tmp
 
 RUN apk add --no-cache  \
     python3 \
