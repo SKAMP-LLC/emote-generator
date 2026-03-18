@@ -1,3 +1,4 @@
+import { HelmetOptions } from "helmet";
 import path from "path";
 
 export const blueprintPath = path.resolve(`${__dirname}`, "../assets/blueprints");
@@ -29,6 +30,6 @@ export const helmetOptions = {
   crossOriginResourcePolicy: {
     policy: "cross-origin"
   }
-};
+} as HelmetOptions;
 
 export const payloadLimit = { limit: "10kb" };

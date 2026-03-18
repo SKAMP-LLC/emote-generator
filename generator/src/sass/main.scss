@@ -4,19 +4,22 @@ $gray: #282c34;
 $white: #EEEEEE;
 $green: #1b8f79;
 
-$primary: $green;
-$link: $green;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-$body-background-color: $gray;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/container.sass";
-@import "../node_modules/bulma/sass/form/_all.sass";
-@import "../node_modules/bulma/sass/grid/_all.sass";
+@use "bulma/sass" with (
+  $primary: $green,
+  $link: $green,
+  $widescreen-enabled: false,
+  $fullhd-enabled: false,
+  $body-background-color: $gray,
+  $box-background-color: transparent,
+  $box-radius: 0,
+  $box-shadow: none,
+  $control-border-width: 2px,
+  $input-border-color: transparent,
+  $input-shadow: none,
+  $box-padding: 0,
+);
+@use "bulma/sass/utilities";
+@use "bulma/sass/base";
+@use "bulma/sass/elements/button";
+@use "bulma/sass/form";
+@use "bulma/sass/grid";

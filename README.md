@@ -14,7 +14,7 @@ npm run build
 
 ### Develop
 
-Serves with Vite on http://localhost:3000
+Serves with Vite on http://localhost:5173
 
 ```bash
 npm run dev

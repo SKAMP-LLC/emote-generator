@@ -40,7 +40,7 @@ export const buildEmote = async(key:string, blueprint:Blueprint):Promise<string>
     );
     b64 = b64.replace(/^data:image\/\w+;base64,/, "");
     return await cacheEmote(key, b64);
-  } catch (error) {
+  } catch {
     throw (new Error("buildEmote failed!"));
   }
 };
@@ -51,7 +51,7 @@ export const cacheEmote = async(key:string, emote:string):Promise<string> => {
     const buffer = Buffer.from(emote, "base64");
     await fsPromises.writeFile(cachedEmotePath, buffer);
     return cachedEmotePath;
-  } catch (error) {
+  } catch {
     throw (new Error("cacheEmote failed!"));
   }
 };
@@ -66,7 +66,7 @@ export const getCachedEmoteList = async():Promise<string[]> => {
         validEmotes.push(filename);
       }
     }
-    catch (error) {
+    catch {
       console.error(`Failed to read: ${cachePath}/${filename}`);
       throw(new Error(`Failed to read: ${emotePath}/${filename}`));
     }
@@ -84,7 +84,7 @@ export const getCachedEmotePath = async(key:string):Promise<string | null> => {
     return fileExists ? cachedEmotePath : null;
   } catch (error) {
     console.error(error);
-    throw (new Error("getCachedEmotePath failed!"));
+    throw (new Error("getCachedEmotePath failed!"), error);
   }
 };
 
@@ -101,7 +101,7 @@ function readEmoteParts({ character, head, eyebrows, eyes, mouth }:Blueprint) {
       return await fsPromises.readFile(
         `${emotePath}/${character.toLowerCase()}_${part.key.toLowerCase()}_${part.name.toLowerCase()}.png`
       );
-    } catch (error) {
+    } catch {
       throw (new Error("getCachedEmotePath failed!"));
     }
   };

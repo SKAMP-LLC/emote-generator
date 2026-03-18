@@ -15,7 +15,7 @@ export const listAllParts = async():Promise<string[]> => {
     }
     catch (error) {
       console.error(`Failed to read: ${emotePath}/${filename}`);
-      throw(new Error(`Failed to read: ${emotePath}/${filename}`));
+      throw(new Error(`Failed to read: ${emotePath}/${filename}`), error);
     }
   });
 
@@ -28,7 +28,7 @@ export const listAllPartsForCharacter = async(character:string):Promise<string[]
     return dirContents.filter((partFilename) => {
       return partFilename.startsWith(`${character.toLowerCase()}_`);
     });
-  } catch (error) {
+  } catch {
     throw (new Error("listAllPartsForCharacter failed!"));
   }
 };

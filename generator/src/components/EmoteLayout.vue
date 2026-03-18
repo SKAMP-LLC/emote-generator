@@ -2,6 +2,7 @@
   <div
     id="emote-generator"
     class="container"
+    data-theme="dark"
   >
     <div class="columns is-centered">
       <emote-options

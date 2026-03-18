@@ -8,7 +8,7 @@ let blueprints:BlueprintCollection = {};
 export const getBlueprint = (key: string):Blueprint => {
   try {
     return blueprints[key];
-  } catch (error) {
+  } catch {
     throw (new Error("getBlueprint failed!"));
   }
 };
@@ -16,7 +16,7 @@ export const getBlueprint = (key: string):Blueprint => {
 export const getAllBlueprints = async(): Promise<string[]> => {
   try {
     return Object.keys(blueprints).sort();
-  } catch (err) {
+  } catch {
     throw (new Error("getAllBlueprints failed!"));
   }
 };
@@ -26,7 +26,7 @@ export const getAllBlueprintsForCharacter = async(character: string): Promise<st
     return Object.keys(blueprints).filter((key) => {
       return key.startsWith(`${character}_`);
     });
-  } catch (err) {
+  } catch {
     throw (new Error("getAllBlueprintsForCharacter failed!"));
   }
 };
@@ -41,7 +41,7 @@ async function readBlueprintsDirectory():Promise<void> {
         blueprints = Object.assign(blueprints, fileData);
       }
     }
-    catch (error) {
+    catch {
       console.error(`Failed to read: ${blueprintPath}/${filename}`);
       throw(new Error(`Failed to read: ${blueprintPath}/${filename}`));
     }
