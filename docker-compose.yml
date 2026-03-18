@@ -1,0 +1,14 @@
+services:
+  emote-generator:
+    container_name: emote-generator
+    build: .
+    volumes:
+      - ../emote-data/:/assets/
+    networks:
+      - emote_network
+    ports:
+      - 4000:4000
+    restart: unless-stopped
+
+networks:
+  emote_network:
